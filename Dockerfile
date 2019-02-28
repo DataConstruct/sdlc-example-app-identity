@@ -15,7 +15,7 @@ RUN dotnet publish --no-restore -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-RRUN mkdir -p /opt/appdynamics/dotnet
+RUN mkdir -p /opt/appdynamics/dotnet
 ADD appd/libappdprofiler.so /opt/appdynamics/dotnet/
 ADD appd/AppDynamics.Agent.netstandard.dll /opt/appdynamics/dotnet/
 # Mandatory settings required to attach the agent to the .NET application
