@@ -176,6 +176,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
 
         private void RegisterAppInsights(IServiceCollection services)
         {
+            services.AddSingleton<ITelemetryInitializer>(new CloudRoleNameInitializer("identity"));
             services.AddApplicationInsightsTelemetry(Configuration);
             var orchestratorType = Configuration.GetValue<string>("OrchestratorType");
 
